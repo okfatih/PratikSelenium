@@ -1,6 +1,9 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GetTitleUrlNumberOfTags {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver","src/kaynaklar/drivers/chromedriver.exe");
@@ -26,23 +29,25 @@ public class GetTitleUrlNumberOfTags {
 
         //Sayfanın handle değerlerini yazdıralım
 
+        System.out.println("Page Handle Value: " + driver.getWindowHandle());
+
+        //Sayfa Htm Kodlarında "Gateway"  kelimesinin geçip geçmediğini test edin
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+        String arananKelime = "details";
+
+
+
+        System.out.println(pageSource.contains(arananKelime) ? "SoruceCode Test Passed" : "SoruceCode Test Failed");
+        driver.close();
+
     }
 }
 
 
-/*
 
 
 
 
-        //Sayfa handle degerini yazdirin
-        System.out.println("Handle değeri : "+driver.getWindowHandle());
-        //Sayfa HTML kodlarinda “Gateway” kelimesi gectigini test edin
-        String actualPageSource = driver.getPageSource();
-        String htmlArananKelime = "Gateway";
-        if (actualPageSource.contains(htmlArananKelime)){
-            System.out.println("Sourcecode Testi PASSED");
-        }else System.out.println("Sourcecode Testi FAILED");
-        //Sayfayi kapatin.
-        driver.close();
- */
+
+
